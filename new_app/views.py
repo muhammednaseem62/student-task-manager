@@ -5,6 +5,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import TaskSerializer
+from django.contrib.auth.models import User
+
+
 
 
 def task_list(request):
@@ -40,3 +43,11 @@ def task_api(request):
     tasks = Task.objects.all()
     serializer = TaskSerializer(tasks, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+def register(request):
+    User.objects.create_user(
+        username=request.data['username'],
+        password=request.data['password']
+    )
+    return Response({"message":"User created"})
