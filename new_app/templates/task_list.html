@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student task manager</title>
+</head>
+<body>
+    <h1>student task manager</h1>
+    <a href="/add/">Add Task</a>
+    {% for i in tasks %}
+        <h3>{{i.title}}</h3>
+        <p>{{i.description}}</p>
+        {% if i.completed %}
+            <p>completed</p>
+        {% else %}
+            <p>pending</p>
+        {% endif %}
+        <a href="/complete/{{ i.id }}/">Complete</a>
+        <a href="/delete/{{ i.id }}/">Delete</a>
+        <hr>
+    {% endfor %}
+</body>
+</html>
