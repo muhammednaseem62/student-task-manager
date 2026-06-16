@@ -1,0 +1,4 @@
+Django==5.0.5
+djangorestframework
+djangorestframework-simplejwt
+gunicorn
